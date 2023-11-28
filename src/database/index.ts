@@ -7,4 +7,5 @@ export const AppDataSource = new DataSource({
   username: "ignite",
   password: "ignite",
   database: "rentalx",
+  migrations: ["./src/database/migrations/*.ts"],
 });
