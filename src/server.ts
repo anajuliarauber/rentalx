@@ -1,10 +1,10 @@
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 
+import { AppDataSource } from "./database";
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
-
-import "./database";
+import "./shared/container";
 
 const app = express();
 
@@ -13,6 +13,13 @@ app.use(router);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.listen(3333, () => {
-  console.log("Server running on port :3333");
-});
+AppDataSource.initialize()
+  .then(() => {
+    app.listen(3333, () => {
+      console.log("Server running on port :3333");
+    });
+  })
+  .catch((error) => {
+    console.log("teste");
+    console.log(error);
+  });
