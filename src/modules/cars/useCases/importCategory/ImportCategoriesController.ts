@@ -7,9 +7,11 @@ class ImportCategoriesController {
 
   handle(request: Request, response: Response): Response {
     const { file } = request;
+
     const importCategoriesUseCase = container.resolve(ImportCategoriesUseCase)
     importCategoriesUseCase.execute(file);
-    return response.send();
+
+    return response.status(201).send();
   }
 }
 
