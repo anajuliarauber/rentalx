@@ -8,7 +8,6 @@ class UsersRepository implements IUsersRepository {
   private readonly repository: Repository<User>
   constructor() { this.repository = AppDataSource.getRepository(User) }
 
-
   async findByEmail(email: string): Promise<User | null> {
     const user = await this.repository.findOne({
       where: {
@@ -19,6 +18,15 @@ class UsersRepository implements IUsersRepository {
     return user
   }
 
+  async findById(id: string): Promise<User | null> {
+    const user = await this.repository.findOne({
+      where: {
+        id
+      }
+    })
+
+    return user
+  }
 
   async create({
     name, driver_license, email, password
