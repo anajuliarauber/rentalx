@@ -3,6 +3,7 @@ import fs from "fs";
 
 import { type CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 
 interface IImportCategory {
   name: string;
@@ -44,7 +45,7 @@ class ImportCategoriesUseCase {
 
   async execute(file: Express.Multer.File | undefined): Promise<void> {
     if (!file) {
-      throw new Error("File not found!");
+      throw new AppError("File not found!", 404);
     }
 
     const categories = await this.loadCategories(file);

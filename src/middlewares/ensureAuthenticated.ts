@@ -3,6 +3,7 @@ import { verify } from "jsonwebtoken";
 
 import { tokenSecret } from "../shared/constants/session";
 import { UsersRepository } from "../modules/accounts/repositories/implementations/UsersRepository";
+import { AppError } from "../errors/AppError";
 
 interface IPayload {
   sub: string
@@ -12,7 +13,7 @@ export async function ensureAuthenticated(request: Request, response: Response, 
   const authHeader = request.headers.authorization
 
   if (!authHeader) {
-    throw new Error("Tonken missing!")
+    throw new AppError("Tonken missing!", 401)
   }
 
   const [, token] = authHeader.split(" ")
@@ -24,12 +25,12 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     const user = await usersRepository.findById(userId)
 
     if (!user) {
-      throw new Error("User not found!")
+      throw new AppError("User not found!", 404)
     }
 
     next()
   } catch {
-    throw new Error("Invalid token!")
+    throw new AppError("Invalid token!", 401)
   }
 
 
