@@ -1,7 +1,9 @@
 import { inject, injectable } from "tsyringe"
 import { compare } from "bcrypt"
-import { IUsersRepository } from "../../repositories/IUsersRepository"
 import { sign } from "jsonwebtoken"
+
+import { IUsersRepository } from "../../repositories/IUsersRepository"
+import { tokenSecret } from "../../../../shared/constants/session"
 
 interface IRequest {
   email: string
@@ -37,8 +39,7 @@ class AuthenticateUserUseCase {
       throw new Error("Email or password incorrect!")
     }
 
-    // 2nd parameter generated with md5 hash
-    const token = sign({}, "aa01fe069d11f4a6af82b67ca02c7450", {
+    const token = sign({}, tokenSecret, {
       subject: user.id,
       expiresIn: "1d"
     })
