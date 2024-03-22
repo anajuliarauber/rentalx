@@ -1,18 +1,18 @@
 import express from "express";
-import "express-async-errors"
+import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
 import { AppDataSource } from "./database";
+import { errorMiddleware } from "./middlewares/error";
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
 import "./shared/container";
-import { errorMiddleware } from "./middlewares/error";
 
 const app = express();
 
 app.use(express.json());
 app.use(router);
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

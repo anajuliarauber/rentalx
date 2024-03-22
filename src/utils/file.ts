@@ -1,14 +1,13 @@
-import fs from "fs"
+import fs from "fs";
 
-export const deleteFile = async (filename: string) => {
+export const deleteFile = async (filename: string): Promise<void> => {
   // verify if the file exists
   try {
-    await fs.promises.stat(filename)
+    await fs.promises.stat(filename);
   } catch {
-    return
+    return;
   }
 
   // remove file
-  await fs.promises.unlink(filename)
-
-}
+  await fs.promises.unlink(filename);
+};

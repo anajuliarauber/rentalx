@@ -1,9 +1,9 @@
 import { parse } from "csv-parse";
 import fs from "fs";
-
-import { type CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 import { inject, injectable } from "tsyringe";
+
 import { AppError } from "../../../../errors/AppError";
+import { type CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 
 interface IImportCategory {
   name: string;
@@ -14,7 +14,8 @@ interface IImportCategory {
 class ImportCategoriesUseCase {
   constructor(
     @inject("CategoriesRepository")
-    private readonly categoriesRepository: CategoriesRepository) { }
+    private readonly categoriesRepository: CategoriesRepository,
+  ) {}
 
   private async loadCategories(
     file: Express.Multer.File,

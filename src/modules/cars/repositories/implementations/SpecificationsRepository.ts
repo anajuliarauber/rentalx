@@ -1,13 +1,14 @@
+import { type Repository } from "typeorm";
+
+import { AppDataSource } from "../../../../database";
 import { Specification } from "../../entities/Specification";
 import {
   type ISpecificationsRepository,
   type ICreateSpecificationDTO,
 } from "../ISpecificationsRepository";
-import { Repository } from "typeorm";
-import { AppDataSource } from "../../../../database";
 
 class SpecificationsRepository implements ISpecificationsRepository {
-  private repository: Repository<Specification>;
+  private readonly repository: Repository<Specification>;
 
   constructor() {
     this.repository = AppDataSource.getRepository(Specification);
