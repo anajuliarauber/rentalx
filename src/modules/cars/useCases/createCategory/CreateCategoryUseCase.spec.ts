@@ -1,14 +1,14 @@
 import { AppError } from "../../../../errors/AppError";
-import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
+import { CategoriesRepositoryMock } from "../../repositories/mock/CategoriesRepositoryMock";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let createCategoryUseCase: CreateCategoryUseCase;
-let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
+let categoriesRepositoryInMemory: CategoriesRepositoryMock;
 
 describe("Create category", () => {
   beforeEach(() => {
-    categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
+    categoriesRepositoryInMemory = new CategoriesRepositoryMock();
     createCategoryUseCase = new CreateCategoryUseCase(
       categoriesRepositoryInMemory,
     );

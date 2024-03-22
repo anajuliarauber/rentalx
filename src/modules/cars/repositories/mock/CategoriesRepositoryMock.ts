@@ -4,7 +4,7 @@ import {
   type ICategoriesRepository,
 } from "../ICategoriesRepository";
 
-class CategoriesRepositoryInMemory implements ICategoriesRepository {
+class CategoriesRepositoryMock implements ICategoriesRepository {
   categories: Category[] = [];
   async findByName(name: string): Promise<Category> {
     const category = this.categories.find((category) => category.name === name);
@@ -23,4 +23,4 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
   }
 }
 
-export { CategoriesRepositoryInMemory };
+export { CategoriesRepositoryMock };
