@@ -2,8 +2,8 @@ import { parse } from "csv-parse";
 import fs from "fs";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
-import { type CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
+import { AppError } from "@errors/AppError";
+import { type CategoriesRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
 
 interface IImportCategory {
   name: string;

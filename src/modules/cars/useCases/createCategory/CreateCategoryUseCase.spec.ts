@@ -1,5 +1,6 @@
-import { AppError } from "../../../../errors/AppError";
-import { CategoriesRepositoryMock } from "../../repositories/mock/CategoriesRepositoryMock";
+import { AppError } from "@errors/AppError";
+import { CategoriesRepositoryMock } from "@modules/cars/repositories/mock/CategoriesRepositoryMock";
+
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

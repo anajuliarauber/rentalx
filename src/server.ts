@@ -6,7 +6,7 @@ import { AppDataSource } from "./database";
 import { errorMiddleware } from "./middlewares/error";
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
-import "./shared/container";
+import "@shared/container";
 
 const app = express();
 
