@@ -17,5 +17,6 @@ This API allows users to browse and rent cars.
 - Docker
 - TypeORM
 - Swagger
+- Jest
 
 
