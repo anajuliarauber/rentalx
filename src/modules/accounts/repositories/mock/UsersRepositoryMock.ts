@@ -1,5 +1,6 @@
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+
 import { type ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
 import { type IUsersRepository } from "../IUsersRepository";
 
 class UsersRepositoryMock implements IUsersRepository {

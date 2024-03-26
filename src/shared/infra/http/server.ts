@@ -2,10 +2,10 @@ import express from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
-import { AppDataSource } from "./database";
+import swaggerFile from "../../../../src/swagger.json";
+import { AppDataSource } from "../typeorm/database";
 import { errorMiddleware } from "./middlewares/error";
 import { router } from "./routes";
-import swaggerFile from "./swagger.json";
 import "@shared/container";
 
 const app = express();
@@ -23,6 +23,5 @@ AppDataSource.initialize()
     });
   })
   .catch((error) => {
-    console.log("teste");
     console.log(error);
   });

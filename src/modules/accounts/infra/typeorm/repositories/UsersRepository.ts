@@ -1,9 +1,9 @@
 import { type Repository } from "typeorm";
 
-import { AppDataSource } from "../../../../database";
-import { type ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
-import { type IUsersRepository } from "../IUsersRepository";
+import { type ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { type IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { AppDataSource } from "@shared/infra/typeorm/database";
 
 class UsersRepository implements IUsersRepository {
   private readonly repository: Repository<User>;

@@ -1,6 +1,6 @@
 import { type NextFunction, type Request, type Response } from "express";
 
-import { AppError } from "../errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 const errorMiddleware = (
   err: Error,
