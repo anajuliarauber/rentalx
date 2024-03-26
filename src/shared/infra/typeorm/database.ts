@@ -8,5 +8,5 @@ export const AppDataSource = new DataSource({
   password: "ignite",
   database: "rentalx",
   entities: ["./src/modules/**/entities/*.ts"],
-  migrations: ["./src/migrations/*.ts"],
+  migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
 });
